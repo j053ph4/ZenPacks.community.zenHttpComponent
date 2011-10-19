@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<objects>
+<object id='/zport/dmd/zenMenus/URLMenu' module='Products.ZenModel.ZenMenu' class='ZenMenu'>
+<tomanycont id='zenMenuItems'>
+<object id='addURL' module='Products.ZenModel.ZenMenuItem' class='ZenMenuItem'>
+<property id='zendoc' type='string'>
+Add Monitored URL
+</property>
+<property type="text" id="description" mode="w" >
+Add Monitored URL
+</property>
+<property type="text" id="action" mode="w" >
+manage_addURL
+</property>
+<property type="boolean" id="isglobal" mode="w" >
+True
+</property>
+<property type="lines" id="permissions" mode="w" >
+('ZenCommon',)
+</property>
+<property type="boolean" id="isdialog" mode="w" >
+True
+</property>
+<property type="float" id="ordering" mode="w" >
+70.0
+</property>
+</object>
+<object id='delURL' module='Products.ZenModel.ZenMenuItem' class='ZenMenuItem'>
+<property id='zendoc' type='string'>
+Remove Monitored URL
+</property>
+<property type="text" id="description" mode="w" >
+Remove Monitored URL
+</property>
+<property type="text" id="action" mode="w" >
+manage_delURL
+</property>
+<property type="boolean" id="isglobal" mode="w" >
+True
+</property>
+<property type="lines" id="permissions" mode="w" >
+('ZenCommon',)
+</property>
+<property type="boolean" id="isdialog" mode="w" >
+True
+</property>
+<property type="float" id="ordering" mode="w" >
+60.0
+</property>
+</object>
+</tomanycont>
+</object>
+</objects>
+

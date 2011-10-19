@@ -1,0 +1,71 @@
+<tal:block metal:use-macro="here/templates/macros/page2">
+<tal:block metal:fill-slot="contentPane">
+ 
+<form method="post" name="manageURLs" tal:attributes="action string:${here/absolute_url_path}/${template/id}">
+
+	<tal:block tal:define="tableName string:urllist;
+			ztm here/ZenTableManager;
+			objects here/getURLs;
+	        showfilterbox python:False;
+	       	batch python:ztm.getBatch(tableName, objects);
+	       	menu_id string:URLMenu;
+	        tabletitle string:Manage URLs">
+	        
+	<input type='hidden' name='tableName' tal:attributes="value tableName" />
+	<input type="hidden" name="zenScreenName" tal:attributes="value template/id"/>      
+	 
+	<tal:block metal:use-macro="here/zenuimacros/macros/zentable">
+	<tal:block metal:fill-slot="zentablecontents">
+	
+	<!--====Optional titlebar slots=============
+	<tal:block metal:fill-slot="filterslot">
+	</tal:block>
+
+	<tal:block metal:fill-slot="menuslot">
+	</tal:block>
+	==========================================-->
+
+	<!-- BEGIN TABLE CONTENTS -->
+	    <tr>
+	        <th tal:replace="structure python:here.ZenTableManager.getTableHeader(
+	                    tableName,'id','Name')"/>
+	        <th tal:replace="structure python:here.ZenTableManager.getTableHeader(
+	                    tableName,'httpUrl','HTTP GET')"/>
+	        <th tal:replace="structure python:here.ZenTableManager.getTableHeader(
+	                    tableName,'httpJsonPost','HTTP POST')"/>   
+	        <th tal:replace="structure python:here.ZenTableManager.getTableHeader(
+	                    tableName,'httpFindString','REGEX')"/>             
+	        <th tal:replace="structure python:here.ZenTableManager.getTableHeader(
+	                    tableName,'httpPort','Port')"/>  
+	    </tr>
+	    
+	    <tal:block tal:repeat="ds batch">
+	    <tr tal:define="odd repeat/ds/odd"
+        	tal:attributes="class python:odd and 'odd' or 'even'">
+	        <td>
+	            <input type="checkbox" name="ids:list"
+	               tal:attributes="value ds/getId"/>
+	            <a tal:attributes="href ds/getPrimaryUrlPath"
+	                tal:content="ds/getId">name</a>
+	        </td>
+	        <td tal:content="ds/httpUrl"/>
+	        <td tal:content="ds/httpJsonPost"/>
+	        <td tal:content="ds/httpFindString"/>
+	        <td tal:content="ds/httpPort"/>
+	    </tr>
+	    </tal:block>
+	    <tr>
+	        <td colspan="6" class="tableheader">
+	            <span metal:use-macro="here/zenTableNavigation/macros/navbody"/>
+	        </td>
+	    </tr>
+ 	<!-- END TABLE CONTENTS -->
+
+	</tal:block>
+	</tal:block>
+	</tal:block>
+</form>
+
+</tal:block>
+</tal:block>
+

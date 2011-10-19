@@ -1,0 +1,63 @@
+<h2>Add URL</h2>
+
+<form method="post" name="manage_addHttpComponent" tal:attributes="action context/absolute_url_path">
+  
+<table>
+<tr><td>
+    <span id="new_id_label" style="color:white;">Name: </span>
+</td><td>
+	<input id="newId" name="id" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpurl" style="color:white;">HTTP GET:  </span>
+</td><td>
+	<input name="httpUrl" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpjsonpost" style="color:white;">HTTP POST:  </span>
+</td><td>
+	<input name="httpJsonPost" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpport" style="color:white;">Port:  </span>
+</td><td>
+	<input name="httpPort" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpauthuser" style="color:white;">User:  </span>
+</td><td>
+	<input name="httpAuthUser" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpauthpassword" style="color:white;">Password:  </span>
+</td><td>
+	<input name="httpAuthPassword" style="width:120px">
+</td></tr>
+
+<tr><td>
+    <span id="httpfindstring" style="color:white;">String Match:  </span>
+</td><td>
+	<input name="httpFindString" style="width:120px">
+</td></tr>
+
+
+<div id="dialog_buttons">
+
+<input tal:attributes="type string:submit;
+                value string:OK"
+        		name="manage_addHttpComponent:method" />
+        
+<input tal:attributes="id string:dialog_cancel;
+                        type string:button;
+                        value string:Cancel;
+                        onclick string:$$('dialog').hide()" />
+        
+</div>
+</table>
+<br>
+</form>

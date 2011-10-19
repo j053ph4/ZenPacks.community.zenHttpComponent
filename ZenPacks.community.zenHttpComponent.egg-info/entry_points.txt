@@ -1,0 +1,3 @@
+[zenoss.zenpacks]
+ZenPacks.community.zenHttpComponent = ZenPacks.community.zenHttpComponent
+
