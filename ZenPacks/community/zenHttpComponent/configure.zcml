@@ -5,15 +5,35 @@
     xmlns:zcml="http://namespaces.zope.org/zcml">
 
 	<configure zcml:condition="installed Products.Zuul">
-	
+		
+		<!-- Component Info -->
 		<adapter factory=".info.HttpComponentInfo"
 			for=".HttpComponent.HttpComponent"
 			provides=".interfaces.IHttpComponentInfo"
 		/>
-		
+
+    	<!-- Import directRouter Directive -->
+    	<include package="Products.ZenUtils.extdirect.zope" file="meta.zcml"/>
+
+	    <browser:directRouter
+	        name="zenHttpComponent_router"
+	        for="*"
+	        class=".routers.zenHttpComponentRouter"
+	        namespace="Zenoss.remote"
+	        permission="zenoss.View"
+	    />
+
+    	<adapter
+        	name="zenHttpComponentAdapter"
+        	provides=".interfaces.IzenHttpComponentFacade"
+        	for="*"
+        	factory=".facades.zenHttpComponentFacade"
+        />
+        
+		<!-- Javascript stuff -->
 		<browser:resourceDirectory
-			name="zenHttpComponent"
-			directory="resources"
+				name="zenHttpComponent"
+				directory="resources"
 		/>
 		
 		<browser:viewlet
@@ -24,27 +44,16 @@
 			class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
 			permission="zope2.Public"
 		/>
-    
-	    <browser:page
-			name="manageURLs"
-	        for=".HttpDevice.HttpDevice"
-	        template="templates/manageURLs.pt"
-	        permission="zenoss.View"
-		/>
-	    
-	    <browser:page
-			name="manage_addURL"
-	        for="*"
-	        template="templates/manage_addURL.pt"
-	        permission="zenoss.View"
-		/>
-		
-	    <browser:page
-			name="manage_delURL"
-	        for="*"
-	        template="templates/manage_delURL.pt"
-	        permission="zenoss.View"
-		/>
+	
+      <browser:viewlet
+          name="component-add-menu-httpcomponent"
+          paths="/++resource++zenHttpComponent/httpcomponent-add.js"
+          weight="9"
+          for="Products.ZenModel.Device.Device"
+          manager="Products.ZenUI3.browser.interfaces.IHeadExtraManager"
+          class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
+          permission="zope2.Public"
+          />
 
 	</configure>
 </configure>

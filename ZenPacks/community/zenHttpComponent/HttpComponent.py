@@ -1,8 +1,6 @@
 ################################################################################
 #
 # This program is part of the zenHttpComponent Zenpack for Zenoss.
-# Copyright (C) 2011 ATX Group, Inc.
-#
 # This program can be used under the GNU General Public License version 2
 # You can find full information here: http://www.zenoss.com/oss
 #
@@ -24,7 +22,9 @@ class HttpComponent(DeviceComponent, ManagedEntity):
     httpAuthPassword = None
     httpJsonPost = None
     httpFindString = None
-
+    httpEventComponent = 'URL'
+    httpEventKey = 'WWW'
+    
     _properties = (
         {'id':'httpUrl', 'type':'string', 'mode':''},
         {'id':'httpPort', 'type':'string', 'mode':''},
@@ -32,10 +32,12 @@ class HttpComponent(DeviceComponent, ManagedEntity):
         {'id':'httpAuthPassword', 'type':'string', 'mode':''},
         {'id':'httpFindString', 'type':'string', 'mode':''},
         {'id':'httpJsonPost', 'type':'string', 'mode':''},
+        {'id':'httpEventComponent', 'type':'string', 'mode':''},
+        {'id':'httpEventKey', 'type':'string', 'mode':''},
         )
 
     _relations = (
-        ('httpDevice', ToOne(ToManyCont,'ZenPacks.community.zenHttpComponent.HttpDevice', 'httpComponent')),
+        ('httpDevice', ToOne(ToManyCont,'Products.ZenModel.Device.Device', 'httpComponent')),
         )
 
     factory_type_information = ({
@@ -46,6 +48,10 @@ class HttpComponent(DeviceComponent, ManagedEntity):
             'permissions': (ZEN_CHANGE_DEVICE,),
         },),
     },)
+    
+    isUserCreatedFlag = True
+    def isUserCreated(self):
+        return self.isUserCreatedFlag
     
     def viewName(self):
         return self.httpUrl
@@ -65,6 +71,12 @@ class HttpComponent(DeviceComponent, ManagedEntity):
     
     def device(self):
         return self.httpDevice()
-    
-    def monitored(self):
-        return True
+
+    def manage_deleteComponent(self, REQUEST=None):
+        url = None
+        if REQUEST is not None:
+            url = self.device().httpComponents.absolute_url()
+        self.getPrimaryParent()._delObject(self.id)
+        if REQUEST is not None:
+            REQUEST['RESPONSE'].redirect(url)
+

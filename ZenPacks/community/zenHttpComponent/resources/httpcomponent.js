@@ -28,6 +28,7 @@ ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'httpPort'},
                 {name: 'httpJsonPost'},
                 {name: 'httpFindString'},
+                {name: 'usesMonitorAttribute'},
                 {name: 'monitor'},
                 {name: 'monitored'},
                 {name: 'locking'}

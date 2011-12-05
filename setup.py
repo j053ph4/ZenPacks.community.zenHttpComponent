@@ -9,7 +9,7 @@ LICENSE = ""
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.community']
 PACKAGES = ['ZenPacks', 'ZenPacks.community', 'ZenPacks.community.zenHttpComponent']
 INSTALL_REQUIRES = []
-COMPAT_ZENOSS_VERS = ""
+COMPAT_ZENOSS_VERS = ">=3.0"
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
 ################################

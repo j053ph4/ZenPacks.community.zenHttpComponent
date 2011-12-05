@@ -1,6 +1,6 @@
 from Products.Zuul.form import schema
 from Products.Zuul.interfaces.component import IComponentInfo
-from Products.Zuul.utils import ZuulMessageFactory as _t
+from Products.Zuul.interfaces import IFacade
 
 class IHttpComponentInfo(IComponentInfo):
     """
@@ -12,4 +12,11 @@ class IHttpComponentInfo(IComponentInfo):
     httpEventKey = schema.Text(title=u"Event Key")
     httpJsonPost = schema.Text(title=u"JSON String")
     httpFindString = schema.Text(title=u"Find String")
+    httpAuthUser = schema.Text(title=u"User")
+    httpAuthPassword = schema.Password(title=u"Password")
 
+class IzenHttpComponentFacade(IFacade):
+    
+    def addHttpComponent(self, ob, httpPort, httpUrl, httpAuthUser, httpAuthPassword, httpJsonPost, httpFindString):
+        """  add HTTP Component to device
+        """

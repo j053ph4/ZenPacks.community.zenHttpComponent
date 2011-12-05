@@ -1,54 +1,174 @@
 <?xml version="1.0"?>
 <objects>
-<object id='/zport/dmd/zenMenus/URLMenu' module='Products.ZenModel.ZenMenu' class='ZenMenu'>
-<tomanycont id='zenMenuItems'>
-<object id='addURL' module='Products.ZenModel.ZenMenuItem' class='ZenMenuItem'>
-<property id='zendoc' type='string'>
-Add Monitored URL
+<!-- ('', 'zport', 'dmd', 'Devices', 'rrdTemplates', 'HttpComponent') -->
+<object id='/zport/dmd/Devices/rrdTemplates/HttpComponent' module='Products.ZenModel.RRDTemplate' class='RRDTemplate'>
+<property type="string" id="targetPythonClass" mode="w" >
+ZenPacks.community.zenHttpComponent.HttpComponent
 </property>
-<property type="text" id="description" mode="w" >
-Add Monitored URL
+<tomanycont id='datasources'>
+<object id='check-http' module='Products.ZenModel.BasicDataSource' class='BasicDataSource'>
+<property select_variable="sourcetypes" type="selection" id="sourcetype" mode="w" >
+COMMAND
 </property>
-<property type="text" id="action" mode="w" >
-manage_addURL
-</property>
-<property type="boolean" id="isglobal" mode="w" >
+<property type="boolean" id="enabled" mode="w" >
 True
 </property>
-<property type="lines" id="permissions" mode="w" >
-('ZenCommon',)
+<property type="string" id="component" mode="w" >
+${here/httpEventComponent}
 </property>
-<property type="boolean" id="isdialog" mode="w" >
+<property type="string" id="eventClass" mode="w" >
+/Cmd/Fail
+</property>
+<property type="string" id="eventKey" mode="w" >
+${here/httpEventKey}
+</property>
+<property type="int" id="severity" mode="w" >
+3
+</property>
+<property type="string" id="commandTemplate" mode="w" >
+check_http -H ${dev/manageIp} -p ${here/httpPort} -u ${here/httpUrl} -a ${here/httpAuthUser}:${here/httpAuthPassword} -P ${here/httpJsonPost} -s ${here/httpFindString}
+</property>
+<property type="int" id="cycletime" mode="w" >
+300
+</property>
+<property type="boolean" id="usessh" mode="w" >
+False
+</property>
+<property type="string" id="parser" mode="w" >
+Auto
+</property>
+<tomanycont id='datapoints'>
+<object id='size' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
+</property>
+<property type="boolean" id="isrow" mode="w" >
 True
-</property>
-<property type="float" id="ordering" mode="w" >
-70.0
 </property>
 </object>
-<object id='delURL' module='Products.ZenModel.ZenMenuItem' class='ZenMenuItem'>
-<property id='zendoc' type='string'>
-Remove Monitored URL
+<object id='time' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
+<property select_variable="rrdtypes" type="selection" id="rrdtype" mode="w" >
+GAUGE
 </property>
-<property type="text" id="description" mode="w" >
-Remove Monitored URL
-</property>
-<property type="text" id="action" mode="w" >
-manage_delURL
-</property>
-<property type="boolean" id="isglobal" mode="w" >
+<property type="boolean" id="isrow" mode="w" >
 True
-</property>
-<property type="lines" id="permissions" mode="w" >
-('ZenCommon',)
-</property>
-<property type="boolean" id="isdialog" mode="w" >
-True
-</property>
-<property type="float" id="ordering" mode="w" >
-60.0
 </property>
 </object>
 </tomanycont>
 </object>
+</tomanycont>
+<tomanycont id='graphDefs'>
+<object id='Response Size' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
+<property type="int" id="height" mode="w" >
+100
+</property>
+<property type="int" id="width" mode="w" >
+500
+</property>
+<property type="string" id="units" mode="w" >
+bytes/sec
+</property>
+<property type="boolean" id="log" mode="w" >
+False
+</property>
+<property type="boolean" id="base" mode="w" >
+False
+</property>
+<property type="int" id="miny" mode="w" >
+-1
+</property>
+<property type="int" id="maxy" mode="w" >
+-1
+</property>
+<property type="boolean" id="hasSummary" mode="w" >
+True
+</property>
+<property type="long" id="sequence" mode="w" >
+1
+</property>
+<tomanycont id='graphPoints'>
+<object id='bytes' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+AREA
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+check-http_size
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+</tomanycont>
+</object>
+<object id='Response Time' module='Products.ZenModel.GraphDefinition' class='GraphDefinition'>
+<property type="int" id="height" mode="w" >
+100
+</property>
+<property type="int" id="width" mode="w" >
+500
+</property>
+<property type="string" id="units" mode="w" >
+secs/sec
+</property>
+<property type="boolean" id="log" mode="w" >
+False
+</property>
+<property type="boolean" id="base" mode="w" >
+False
+</property>
+<property type="int" id="miny" mode="w" >
+-1
+</property>
+<property type="int" id="maxy" mode="w" >
+-1
+</property>
+<property type="boolean" id="hasSummary" mode="w" >
+True
+</property>
+<tomanycont id='graphPoints'>
+<object id='seconds' module='Products.ZenModel.DataPointGraphPoint' class='DataPointGraphPoint'>
+<property select_variable="lineTypes" type="selection" id="lineType" mode="w" >
+AREA
+</property>
+<property type="long" id="lineWidth" mode="w" >
+1
+</property>
+<property type="boolean" id="stacked" mode="w" >
+False
+</property>
+<property type="string" id="format" mode="w" >
+%5.2lf%s
+</property>
+<property type="string" id="legend" mode="w" >
+${graphPoint/id}
+</property>
+<property type="long" id="limit" mode="w" >
+-1
+</property>
+<property type="string" id="dpName" mode="w" >
+check-http_time
+</property>
+<property type="string" id="cFunc" mode="w" >
+AVERAGE
+</property>
+</object>
+</tomanycont>
+</object>
+</tomanycont>
+</object>
 </objects>
-

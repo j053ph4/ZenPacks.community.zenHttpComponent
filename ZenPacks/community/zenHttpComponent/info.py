@@ -14,4 +14,5 @@ class HttpComponentInfo(ComponentInfo):
     httpEventKey = ProxyProperty("httpEventKey")
     httpJsonPost = ProxyProperty("httpJsonPost")
     httpFindString = ProxyProperty("httpFindString")
-
+    httpAuthUser = ProxyProperty("httpAuthUser")
+    httpAuthPassword = ProxyProperty("httpAuthPassword")
