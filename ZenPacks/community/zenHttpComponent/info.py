@@ -8,6 +8,7 @@ class HttpComponentInfo(ComponentInfo):
     Info adapter for HttpComponent components.
     """
     implements(IHttpComponentInfo)
+    httpIp = ProxyProperty("httpIp")
     httpPort = ProxyProperty("httpPort")
     httpUrl = ProxyProperty("httpUrl")
     httpEventComponent = ProxyProperty("httpEventComponent")
@@ -16,3 +17,4 @@ class HttpComponentInfo(ComponentInfo):
     httpFindString = ProxyProperty("httpFindString")
     httpAuthUser = ProxyProperty("httpAuthUser")
     httpAuthPassword = ProxyProperty("httpAuthPassword")
+    httpUseSSL = ProxyProperty("httpUseSSL")

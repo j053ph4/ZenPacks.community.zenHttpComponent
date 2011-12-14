@@ -24,8 +24,10 @@ ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'severity'},
                 {name: 'status'},
                 {name: 'name'},
-                {name: 'httpUrl'},
+                {name: 'httpIp'},
                 {name: 'httpPort'},
+                {name: 'httpUseSSL'},
+                {name: 'httpUrl'},
                 {name: 'httpJsonPost'},
                 {name: 'httpFindString'},
                 {name: 'usesMonitorAttribute'},
@@ -46,17 +48,29 @@ ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
                 header: _t('Name'),
                 sortable: true
             },{
-                id: 'httpUrl',
-                dataIndex: 'httpUrl',
-                header: _t('URL'),
+                id: 'httpIp',
+                dataIndex: 'httpIp',
+                header: _t('IP'),
                 sortable: true,
                 width: 150
+            },{
+                id: 'httpUseSSL',
+                dataIndex: 'httpUseSSL',
+                header: _t('SSL'),
+                sortable: true,
+                width: 70
             },{
                 id: 'httpPort',
                 dataIndex: 'httpPort',
                 header: _t('Port'),
                 sortable: true,
                 width: 70
+            },{
+                id: 'httpUrl',
+                dataIndex: 'httpUrl',
+                header: _t('URL'),
+                sortable: true,
+                width: 150
             },{
                 id: 'httpJsonPost',
                 dataIndex: 'httpJsonPost',

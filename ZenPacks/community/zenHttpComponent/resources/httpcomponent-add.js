@@ -27,10 +27,17 @@
                         footerStyle: 'padding-left: 0',
                         border: false,
                         items: [{
-                            xtype: 'textfield',
+                        	xtype: 'textfield',
                             name: 'httpPort',
                             fieldLabel: _t('Port'),
                             id: "httpPortField",
+                            width: 260,
+                            allowBlank: false
+                        }, {
+                            xtype: 'checkbox',
+                            name: 'httpUseSSL',
+                            fieldLabel: _t('SSL'),
+                            id: "httpUseSSLField",
                             width: 260,
                             allowBlank: false
                         }, {

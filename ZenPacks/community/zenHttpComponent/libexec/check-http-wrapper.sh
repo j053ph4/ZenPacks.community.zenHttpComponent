@@ -10,11 +10,12 @@
 
 HOST=$1;
 URL=$2;
-PORT=$3;
-USER=$4;
-PASS=$5;
-STRING=$6;
-POST=$7;
+SSL=$3;
+PORT=$4;
+USER=$5;
+PASS=$6;
+STRING=$7;
+POST=$8;
 
 COMMAND="/opt/zenoss/libexec/check_http"
 
@@ -44,6 +45,10 @@ fi
 
 if [ "$POST" ] ; then
 	COMMAND=$COMMAND" -P "'"'$POST'"'
+fi
+
+if [ "$SSL" == "True" ] ; then
+	COMMAND=$COMMAND" -S"
 fi
 
 /bin/sh -c "$COMMAND"
