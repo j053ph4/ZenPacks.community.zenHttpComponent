@@ -26,7 +26,7 @@ ${here/httpEventKey}
 3
 </property>
 <property type="string" id="commandTemplate" mode="w" >
-check_http -H ${dev/manageIp} -p ${here/httpPort} -u ${here/httpUrl} -a ${here/httpAuthUser}:${here/httpAuthPassword} -P ${here/httpJsonPost} -s ${here/httpFindString}
+${here/ZenPackManager/packs/ZenPacks.community.zenHttpComponent/path}/libexec/check-http-wrapper.sh ${dev/manageIp} "${here/httpUrl}" ${here/httpPort} "${here/httpAuthUser}" "${here/httpAuthPassword}" "${here/httpFindString}" "${here/httpJsonPost}"
 </property>
 <property type="int" id="cycletime" mode="w" >
 300

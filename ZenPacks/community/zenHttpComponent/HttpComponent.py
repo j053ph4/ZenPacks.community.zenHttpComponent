@@ -9,7 +9,25 @@ from Products.ZenModel.DeviceComponent import DeviceComponent
 from Products.ZenModel.ManagedEntity import ManagedEntity
 from Products.ZenModel.ZenossSecurity import ZEN_CHANGE_DEVICE
 from Products.ZenRelations.RelSchema import ToManyCont, ToOne
+from Globals import DTMLFile
 
+#def manage_addHttpComponent(context, httpPort='80', httpUrl='/', httpAuthUser='', httpAuthPassword='', httpJsonPost='', httpFindString='', REQUEST=None):
+#    """make a http component"""
+#    id = httpUrl.replace('/','_') + '_'+httpPort
+#    hcid = prepId(newId)
+#    httpcomponent = HttpComponent(id)
+#    
+#    context._setObject(httpcomponent.id, httpcomponent)
+#    httpcomponent = context._getOb(httpcomponent.id)
+#    httpcomponent.httpPort = httpPort
+#    httpcomponent.httpUrl = httpUrl
+#    httpcomponent.httpAuthUser = httpAuthUser
+#    httpcomponent.httpAuthPassword = httpAuthPassword
+#    httpcomponent.httpJsonPost = httpJsonPost
+#    httpcomponent.httpFindString = httpFindString
+#    if REQUEST is not None:
+#        REQUEST['RESPONSE'].redirect(context.absolute_url()+'/manage_main')
+#        
 class HttpComponent(DeviceComponent, ManagedEntity):
     """
     HttpComponent contains the basic properties of a HttpComponent
@@ -79,4 +97,5 @@ class HttpComponent(DeviceComponent, ManagedEntity):
         self.getPrimaryParent()._delObject(self.id)
         if REQUEST is not None:
             REQUEST['RESPONSE'].redirect(url)
+
 
