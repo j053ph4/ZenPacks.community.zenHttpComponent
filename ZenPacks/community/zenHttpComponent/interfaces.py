@@ -16,6 +16,7 @@ class IHttpComponentInfo(IComponentInfo):
     httpAuthUser = schema.Text(title=u"User")
     httpAuthPassword = schema.Password(title=u"Password")
     httpUseSSL = schema.Bool(title=u"SSL")
+    httpPluginFlags = schema.Text(title=u"Plugin Flags")
     
 class IzenHttpComponentFacade(IFacade):
     

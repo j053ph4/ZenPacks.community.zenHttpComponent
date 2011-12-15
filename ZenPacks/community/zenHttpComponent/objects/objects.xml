@@ -26,7 +26,7 @@ ${here/httpEventKey}
 3
 </property>
 <property type="string" id="commandTemplate" mode="w" >
-${here/ZenPackManager/packs/ZenPacks.community.zenHttpComponent/path}/libexec/check-http-wrapper.sh "${here/httpIp}" "${here/httpUrl}" "${here/httpUseSSL}" "${here/httpPort}" "${here/httpAuthUser}" "${here/httpAuthPassword}" "${here/httpFindString}" "${here/httpJsonPost}"
+${here/ZenPackManager/packs/ZenPacks.community.zenHttpComponent/path}/libexec/check-http-wrapper.sh "${here/httpIp}" "${here/httpUrl}" "${here/httpUseSSL}" "${here/httpPort}" "${here/httpAuthUser}" "${here/httpAuthPassword}" "${here/httpFindString}" "${here/httpJsonPost}" "${here/httpPluginFlags}"
 </property>
 <property type="int" id="cycletime" mode="w" >
 300

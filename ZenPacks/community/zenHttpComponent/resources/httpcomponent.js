@@ -30,6 +30,7 @@ ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
                 {name: 'httpUrl'},
                 {name: 'httpJsonPost'},
                 {name: 'httpFindString'},
+                {name: 'httpPluginFlags'},
                 {name: 'usesMonitorAttribute'},
                 {name: 'monitor'},
                 {name: 'monitored'},
@@ -83,6 +84,12 @@ ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
                 header: _t('Find'),
                 sortable: true,
                 width: 120
+            },{
+                id: 'httpPluginFlags',
+                dataIndex: 'httpPluginFlags',
+                header: _t('Flags'),
+                sortable: true,
+                width: 120 
             },{
                 id: 'status',
                 dataIndex: 'status',

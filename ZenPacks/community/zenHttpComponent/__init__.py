@@ -13,7 +13,7 @@ Device._relations += (('httpComponents', ToManyCont(ToOne,'ZenPacks.community.ze
 from Products.ZenUtils.Utils import monkeypatch,prepId
 
 @monkeypatch('Products.ZenModel.Device.Device')
-def manage_addHttpComponent(self, httpPort='80', httpUseSSL=False, httpUrl='/', httpAuthUser='', httpAuthPassword='', httpJsonPost='', httpFindString=''):
+def manage_addHttpComponent(self, httpPort='80', httpUseSSL=False, httpUrl='/', httpAuthUser='', httpAuthPassword='', httpJsonPost='', httpFindString='',httpPluginFlags='',httpEventComponent='URL',httpEventKey='WWW'):
     """make a http component"""
     from HttpComponent import HttpComponent
     
@@ -30,6 +30,9 @@ def manage_addHttpComponent(self, httpPort='80', httpUseSSL=False, httpUrl='/', 
     httpcomponent.httpAuthPassword = httpAuthPassword
     httpcomponent.httpJsonPost = httpJsonPost
     httpcomponent.httpFindString = httpFindString
+    httpcomponent.httpPluginFlags = httpPluginFlags
+    httpcomponent.httpEventComponent = httpEventComponent
+    httpcomponent.httpEventKey = httpEventKey
     return httpcomponent
 
 class ZenPack(ZenPackBase):

@@ -16,6 +16,7 @@ USER=$5;
 PASS=$6;
 STRING=$7;
 POST=$8;
+XFLAGS=$9;
 
 COMMAND="/opt/zenoss/libexec/check_http"
 
@@ -51,5 +52,10 @@ if [ "$SSL" == "True" ] ; then
 	COMMAND=$COMMAND" -S"
 fi
 
+if [ "$XFLAGS" ] ; then
+	COMMAND=$COMMAND" "$XFLAGS
+fi
+
+echo "$COMMAND"
 /bin/sh -c "$COMMAND"
 

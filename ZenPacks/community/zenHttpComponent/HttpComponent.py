@@ -26,6 +26,7 @@ class HttpComponent(DeviceComponent, ManagedEntity):
     httpEventComponent = 'URL'
     httpEventKey = 'WWW'
     httpUseSSL = False
+    httpPluginFlags = ''
     
     _properties = (
         {'id':'httpIp', 'type':'string', 'mode':''},           
@@ -37,7 +38,8 @@ class HttpComponent(DeviceComponent, ManagedEntity):
         {'id':'httpJsonPost', 'type':'string', 'mode':''},
         {'id':'httpEventComponent', 'type':'string', 'mode':''},
         {'id':'httpEventKey', 'type':'string', 'mode':''},
-        {'id':'httpUseSSL', 'type':'boolean', 'mode':''}
+        {'id':'httpUseSSL', 'type':'boolean', 'mode':''},
+        {'id':'httpPluginFlags', 'type':'string', 'mode':''}
         )
 
     _relations = (

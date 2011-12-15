@@ -18,3 +18,4 @@ class HttpComponentInfo(ComponentInfo):
     httpAuthUser = ProxyProperty("httpAuthUser")
     httpAuthPassword = ProxyProperty("httpAuthPassword")
     httpUseSSL = ProxyProperty("httpUseSSL")
+    httpPluginFlags = ProxyProperty("httpPluginFlags")
