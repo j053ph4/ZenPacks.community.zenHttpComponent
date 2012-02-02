@@ -35,7 +35,7 @@ ${here/ZenPackManager/packs/ZenPacks.community.zenHttpComponent/path}/libexec/ch
 False
 </property>
 <property type="string" id="parser" mode="w" >
-Auto
+Nagios
 </property>
 <tomanycont id='datapoints'>
 <object id='size' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>
