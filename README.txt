@@ -45,7 +45,19 @@ History:
 
 Change History:
 
-    1.0 initial release
+1.0 initial release
+
+1.1 added wrapper script to handle various check_http arguments
+
+1.2
+    added dmd method manage_addHttpComponent
+    added component attributes "httpUsesSSL" and "httpIp"
+
+1.3 added support for adding arbitrary check_http flags
+
+1.4
+    changed path in wrapper script to use $ZENHOME
+    changed default parser to 'nagios' from 'auto'
 
 Tested: This ZenPack was tested with versions 3.2.1.
 
