@@ -18,7 +18,7 @@ STRING=$7;
 POST=$8;
 XFLAGS=$9;
 
-COMMAND="/opt/zenoss/libexec/check_http"
+COMMAND="$ZENHOME/libexec/check_http"
 
 if [ "$HOST" ] ; then
 	COMMAND=$COMMAND" -H "$HOST
@@ -45,7 +45,7 @@ if [ "$STRING" ] ; then
 fi
 
 if [ "$POST" ] ; then
-	COMMAND=$COMMAND" -P "'"'$POST'"'
+	COMMAND=$COMMAND" -P "$POST
 fi
 
 if [ "$SSL" == "True" ] ; then
