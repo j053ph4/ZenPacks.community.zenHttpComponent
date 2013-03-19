@@ -1,51 +1,40 @@
 import Globals
 from Products.ZenModel.ZenPack import ZenPack as ZenPackBase
+from Products.ZenModel.OperatingSystem import OperatingSystem
 from Products.ZenUtils.Utils import unused
-import os,re
+from Definition import *
 
 unused(Globals)
-""" Add device relations
-"""
-from Products.ZenRelations.RelSchema import *
-from Products.ZenModel.Device import Device
-Device._relations += (('httpComponents', ToManyCont(ToOne,'ZenPacks.community.zenHttpComponent.HttpComponent','httpDevice')),)
 
-from Products.ZenUtils.Utils import monkeypatch,prepId
+c = Construct(Definition)
+c.addDeviceRelation()
 
-@monkeypatch('Products.ZenModel.Device.Device')
-def manage_addHttpComponent(self, httpPort='80', httpUseSSL=False, httpUrl='/', httpAuthUser='', httpAuthPassword='', httpJsonPost='', httpFindString='',httpPluginFlags='',httpEventComponent='URL',httpEventKey='WWW'):
-    """make a http component"""
-    from HttpComponent import HttpComponent
-    
-    newId = self.id + '_' + re.sub('[^A-Za-z0-9]+', '', httpUrl) + '_'+httpPort
-    hcid = prepId(newId)
-    httpcomponent = HttpComponent(hcid)
-    self.httpComponents._setObject(httpcomponent.id, httpcomponent)
-    httpcomponent = self.httpComponents._getOb(httpcomponent.id)
-    httpcomponent.httpIp = self.manageIp
-    httpcomponent.httpPort = httpPort
-    httpcomponent.httpUrl = httpUrl
-    httpcomponent.httpUseSSL = httpUseSSL
-    httpcomponent.httpAuthUser = httpAuthUser
-    httpcomponent.httpAuthPassword = httpAuthPassword
-    httpcomponent.httpJsonPost = httpJsonPost
-    httpcomponent.httpFindString = httpFindString
-    httpcomponent.httpPluginFlags = httpPluginFlags
-    httpcomponent.httpEventComponent = httpEventComponent
-    httpcomponent.httpEventKey = httpEventKey
-    return httpcomponent
+# copied from HttpMonitor
+def onCollectorInstalled(ob, event):
+    zpFriendly = c.componentClass
+    errormsg = '{0} binary cannot be found on {1}. This is part of the nagios-plugins ' + \
+               'dependency, and must be installed before {2} can function.'
+    verifyBin = c.cmdFile
+    code, output = ob.executeCommand('zenbincheck %s' % verifyBin, 'zenoss', needsZenHome=True)
+    if code:
+        log.warn(errormsg.format(verifyBin, ob.hostname, zpFriendly))
 
 class ZenPack(ZenPackBase):
-    """ HTTP Component
+    """ Zenpack install
     """
+    packZProperties = c.d.packZProperties
+    
+    def updateRelations(self):
+        for d in self.dmd.Devices.getSubDevices():
+            d.os.buildRelations()  
 
     def install(self, app):
+        c.buildZenPackFiles()
         ZenPackBase.install(self, app)
-        for d in self.dmd.Devices.getSubDevices():
-            d.buildRelations()
+        self.updateRelations()
 
     def remove(self, app, leaveObjects=False):
         ZenPackBase.remove(self, app, leaveObjects)
-        Device._relations = tuple([x for x in Device._relations if x[0] not in ('httpComponents')])
-        for d in self.dmd.Devices.getSubDevices():
-            d.buildRelations()
+        if not leaveObjects:
+            OperatingSystem._relations = tuple([x for x in OperatingSystem._relations if x[0] not in (c.relname)])
+            self.updateRelations()

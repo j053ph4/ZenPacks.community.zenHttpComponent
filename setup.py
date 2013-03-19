@@ -3,13 +3,13 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.community.zenHttpComponent"
-VERSION = "1.0"
+VERSION = "2.0"
 AUTHOR = "Joseph Anderson"
-LICENSE = ""
+LICENSE = "GPLv2"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.community']
 PACKAGES = ['ZenPacks', 'ZenPacks.community', 'ZenPacks.community.zenHttpComponent']
-INSTALL_REQUIRES = []
-COMPAT_ZENOSS_VERS = ">=3.0"
+INSTALL_REQUIRES = ['ZenPacks.community.ConstructionKit']
+COMPAT_ZENOSS_VERS = ">= 4.0"
 PREV_ZENPACK_NAME = ""
 # STOP_REPLACEMENTS
 ################################
