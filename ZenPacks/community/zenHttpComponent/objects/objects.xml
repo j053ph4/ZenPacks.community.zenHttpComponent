@@ -28,88 +28,88 @@ ${here/eventKey}
 <property type="int" id="cycletime" mode="w" >
 300
 </property>
-<property type="string" id="authUser" mode="w" >
+<property switch="None" type="string" id="authUser" mode="w" >
 ${here/authUser}
 </property>
-<property type="string" id="contentType" mode="w" >
+<property switch="-T" type="string" id="contentType" mode="w" >
 ${here/contentType}
 </property>
-<property type="string" id="string" mode="w" >
+<property switch="-s" type="string" id="string" mode="w" >
 ${here/string}
 </property>
-<property type="string" id="ip" mode="w" >
+<property switch="-I" type="string" id="ip" mode="w" >
 ${here/ip}
 </property>
-<property type="boolean" id="nobody" mode="w" >
-${here/nobody}
+<property switch="-N" type="boolean" id="nobody" mode="w" >
+True
 </property>
-<property type="boolean" id="auth" mode="w" >
-${here/auth}
+<property switch="-a" type="boolean" id="auth" mode="w" >
+True
 </property>
-<property type="boolean" id="ssl" mode="w" >
-${here/ssl}
+<property switch="-S" type="boolean" id="ssl" mode="w" >
+True
 </property>
-<property type="string" id="eventComponent" mode="w" >
+<property switch="None" type="string" id="eventComponent" mode="w" >
 ${here/eventComponent}
 </property>
-<property type="string" id="expect" mode="w" >
+<property switch="-e" type="string" id="expect" mode="w" >
 ${here/expect}
 </property>
-<property type="string" id="proxyAuthUser" mode="w" >
+<property switch="None" type="string" id="proxyAuthUser" mode="w" >
 ${here/proxyAuthUser}
 </property>
-<property type="int" id="cycletime" mode="w" >
+<property switch="None" type="int" id="cycletime" mode="w" >
 300
 </property>
-<property type="string" id="post" mode="w" >
+<property switch="-P" type="string" id="post" mode="w" >
 ${here/post}
 </property>
-<property type="string" id="eregex" mode="w" >
+<property switch="-R" type="string" id="eregex" mode="w" >
 ${here/eregex}
 </property>
-<property type="string" id="authPassword" mode="w" >
+<property switch="None" type="string" id="authPassword" mode="w" >
 ${here/authPassword}
 </property>
-<property type="string" id="regex" mode="w" >
+<property switch="-r" type="string" id="regex" mode="w" >
 ${here/regex}
 </property>
-<property type="boolean" id="urlize" mode="w" >
-${here/urlize}
+<property switch="-L" type="boolean" id="urlize" mode="w" >
+True
 </property>
-<property type="string" id="url" mode="w" >
+<property switch="-u" type="string" id="url" mode="w" >
 ${here/url}
 </property>
-<property type="boolean" id="invert" mode="w" >
-${here/invert}
+<property switch="--invert-regex" type="boolean" id="invert" mode="w" >
+True
 </property>
-<property type="string" id="hostname" mode="w" >
+<property switch="-H" type="string" id="hostname" mode="w" >
 ${here/hostname}
 </property>
-<property type="string" id="maxage" mode="w" >
+<property switch="-M" type="string" id="maxage" mode="w" >
 ${here/maxage}
 </property>
-<property type="string" id="port" mode="w" >
+<property switch="-p" type="string" id="port" mode="w" >
 ${here/port}
 </property>
-<property type="string" id="proxyAuthPassword" mode="w" >
+<property switch="None" type="string" id="proxyAuthPassword" mode="w" >
 ${here/proxyAuthPassword}
 </property>
-<property type="boolean" id="cert" mode="w" >
-${here/cert}
+<property switch="-C" type="boolean" id="cert" mode="w" >
+True
 </property>
-<property type="boolean" id="proxyAuth" mode="w" >
-${here/proxyAuth}
+<property switch="-b" type="boolean" id="proxyAuth" mode="w" >
+True
 </property>
-<property type="string" id="eventKey" mode="w" >
+<property switch="None" type="string" id="eventKey" mode="w" >
 ${here/eventKey}
 </property>
-<property type="string" id="timeout" mode="w" >
+<property switch="-t" type="string" id="timeout" mode="w" >
 60
 </property>
-<property type="string" id="method" mode="w" >
+<property switch="-j" type="string" id="method" mode="w" >
 ${here/method}
 </property>
-<property type="string" id="onRedirect" mode="w" >
+<property switch="-f" type="string" id="onRedirect" mode="w" >
 ${here/onRedirect}
 </property>
 <tomanycont id='datapoints'>
