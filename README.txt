@@ -34,7 +34,7 @@ ZenPack installation.
 
 Requirements:
 
-    Zenoss Versions Supported: 3.0
+    Zenoss Versions Supported: 3.x,4.x
     External Dependencies: None
     ZenPack Dependencies: None
     Installation Notes: zopectl restart; zenhub restart after installing this
@@ -59,7 +59,14 @@ Change History:
     changed path in wrapper script to use $ZENHOME
     changed default parser to 'nagios' from 'auto'
 
-Tested: This ZenPack was tested with versions 3.2.1.
+2.0
+    added Zenoss 4.X support
+    new dependency on "ConstructionKit" ZenPack to simplify current/future development
+    <https://github.com/j053ph4/ZenPacks.community.ConstructionKit>
+    Template now closely resembles that of HttpMonitor ZenPack
+
+
+Tested: This ZenPack was tested with versions 3.2.1, 4.2.3
 
 Source: https://github.com/j053ph4/ZenPacks.community.zenHttpComponent
 
