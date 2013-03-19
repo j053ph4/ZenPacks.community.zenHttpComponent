@@ -34,7 +34,7 @@ ZenPack installation.
 
 Requirements:
 
-    Zenoss Versions Supported: 3.0
+    Zenoss Versions Supported: 3.x,4.x
     External Dependencies: None
     ZenPack Dependencies: None
     Installation Notes: zopectl restart; zenhub restart after installing this
