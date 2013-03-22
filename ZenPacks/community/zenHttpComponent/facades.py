@@ -21,7 +21,7 @@ class zenHttpComponentFacade(ZuulFacade):
         from Products.ZenUtils.Utils import prepId
         from ZenPacks.community.zenHttpComponent.HttpComponent import HttpComponent
         import re
-        cid = ''
+        cid = 'httpcomponent' 
         for k,v in kwargs.iteritems():
             if type(v) != bool:
                 cid += str(v)

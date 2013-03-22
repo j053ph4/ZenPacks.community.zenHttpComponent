@@ -45,10 +45,10 @@ class Definition():
                         # Authentication
                         'auth': addProperty('Authenticate','Authentication', False, ptype='boolean', switch='-a'),
                         'authUser' : addProperty('User','Authentication'),
-                        'authPassword' : addProperty('Password','Authentication'),
+                        'authPassword' : addProperty('Password','Authentication',ptype='password'),
                         'proxyAuth': addProperty('Proxy Authenticate','Authentication', False, ptype='boolean', switch='-b'),
                         'proxyAuthUser' : addProperty('Proxy User','Authentication'),
-                        'proxyAuthPassword' : addProperty('Proxy Password','Authentication'),
+                        'proxyAuthPassword' : addProperty('Proxy Password','Authentication',ptype='password'),
                         # Content parsing
                         'regex' : addProperty('Regex (Case sensitive)','Content', switch='-r'),
                         'eregex' : addProperty('Regex (Case insensitive)','Content', switch='-R'),
