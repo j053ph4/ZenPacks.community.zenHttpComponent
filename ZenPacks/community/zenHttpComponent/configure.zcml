@@ -5,59 +5,51 @@
         xmlns:zcml="http://namespaces.zope.org/zcml">
         <configure zcml:condition="installed Products.Zuul">
 
-            <!-- Datasource Info -->
-            <adapter factory=".info.HttpComponentDataSourceInfo"
-                for=".datasources.HttpComponentDataSource.HttpComponentDataSource"
-                provides=".interfaces.IHttpComponentDataSourceInfo"
-            />
-            <utility provides="zope.schema.interfaces.IVocabularyFactory"
-                component=".info.HttpComponentRedirectVocabulary"
-                name="HttpComponentRedirectVocabulary"
-            />
-            <subscriber zcml:condition="installed ZenPacks.zenoss.DistributedCollector.interfaces"
-                for="ZenPacks.zenoss.DistributedCollector.DistributedPerformanceConf.DistributedPerformanceConf
-                     ZenPacks.zenoss.DistributedCollector.interfaces.ICollectorInstalled"
-                handler=".onCollectorInstalled"
-            />
-            <!-- Component Info -->
-            <adapter factory=".info.HttpComponentInfo"
-                for=".HttpComponent.HttpComponent"
-                provides=".interfaces.IHttpComponentInfo"
-            />
-    
-            <!-- Import directRouter Directive -->
             <include package="Products.ZenUtils.extdirect.zope" file="meta.zcml"/>
-    
+
+
+            <!-- ZenPack Info -->
+
             <browser:directRouter
                 name="zenHttpComponent_router"
                 for="*"
-                class=".routers.zenHttpComponentRouter"
+                class="ZenPacks.community.zenHttpComponent.routers.zenHttpComponentRouter"
                 namespace="Zenoss.remote"
                 permission="zenoss.View"
             />
     
             <adapter
                 name="zenHttpComponentAdapter"
-                provides=".interfaces.IzenHttpComponentFacade"
+                provides="ZenPacks.community.zenHttpComponent.interfaces.IzenHttpComponentFacade"
                 for="*"
-                factory=".facades.zenHttpComponentFacade"
+                factory="ZenPacks.community.zenHttpComponent.facades.zenHttpComponentFacade"
             />
                 
-            <!-- Javascript stuff -->
             <browser:resourceDirectory
                     name="zenHttpComponent"
                     directory="resources"
             />
-                
+
+            <!-- Component Info -->
+            <adapter factory="ZenPacks.community.zenHttpComponent.info.HttpComponentInfo"
+                for="ZenPacks.community.zenHttpComponent.HttpComponent.HttpComponent"
+                provides="ZenPacks.community.zenHttpComponent.interfaces.IHttpComponentInfo"
+            />
+    
             <browser:viewlet
-                name="js-zenHttpComponent"
+                name="js-HttpComponent"
                 paths="/++resource++zenHttpComponent/httpcomponent.js"
                 weight="10"
                 manager="Products.ZenUI3.browser.interfaces.IJavaScriptSrcManager"
                 class="Products.ZenUI3.browser.javascript.JavaScriptSrcBundleViewlet"
                 permission="zope2.Public"
             />
-            
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.HttpComponentgetEventClassesVocabulary"
+                name="HttpComponentgetEventClasses"
+            />
+
             <browser:viewlet
                   name="component-add-menu-httpcomponent"
                   paths="/++resource++zenHttpComponent/httpcomponent-add.js"
@@ -68,7 +60,28 @@
                   permission="zope2.Public"
             />
 
-        
+            <!-- Datasource Info -->
+            <adapter factory="ZenPacks.community.zenHttpComponent.info.HttpComponentDataSourceInfo"
+                for="ZenPacks.community.zenHttpComponent.datasources.HttpComponentDataSource.HttpComponentDataSource"
+                provides="ZenPacks.community.zenHttpComponent.interfaces.IHttpComponentDataSourceInfo"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.HttpComponentRedirectVocabulary"
+                name="HttpComponentRedirectVocabulary"
+            />
+
+            <subscriber zcml:condition="installed ZenPacks.zenoss.DistributedCollector.interfaces"
+                for="ZenPacks.zenoss.DistributedCollector.DistributedPerformanceConf.DistributedPerformanceConf
+                     ZenPacks.zenoss.DistributedCollector.interfaces.ICollectorInstalled"
+                handler=".onCollectorInstalledHttpComponent"
+            />
+
+            <utility provides="zope.schema.interfaces.IVocabularyFactory"
+                component=".info.HttpComponentDataSourcegetEventClassesVocabulary"
+                name="HttpComponentDataSourcegetEventClasses"
+            />
+
         </configure>
     </configure>
 

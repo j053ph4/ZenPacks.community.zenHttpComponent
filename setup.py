@@ -3,9 +3,9 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.community.zenHttpComponent"
-VERSION = "2.0"
+VERSION = "2.1"
 AUTHOR = "Joseph Anderson"
-LICENSE = "GPLv2"
+LICENSE = "Apache"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.community']
 PACKAGES = ['ZenPacks', 'ZenPacks.community', 'ZenPacks.community.zenHttpComponent']
 INSTALL_REQUIRES = ['ZenPacks.community.ConstructionKit']

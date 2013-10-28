@@ -19,35 +19,29 @@ ${here/eventComponent}
 <property type="string" id="eventClass" mode="w" >
 /WWW
 </property>
-<property type="string" id="eventKey" mode="w" >
-${here/eventKey}
-</property>
 <property type="int" id="severity" mode="w" >
 3
 </property>
 <property type="int" id="cycletime" mode="w" >
 300
 </property>
+<property switch="-a" type="boolean" id="auth" mode="w" >
+True
+</property>
 <property switch="None" type="string" id="authUser" mode="w" >
 ${here/authUser}
+</property>
+<property switch="-C" type="int" id="cert" mode="w" >
+True
 </property>
 <property switch="-T" type="string" id="contentType" mode="w" >
 ${here/contentType}
 </property>
-<property switch="-s" type="string" id="string" mode="w" >
-${here/string}
+<property switch="None" type="int" id="cycletime" mode="w" >
+300
 </property>
-<property switch="-I" type="string" id="ip" mode="w" >
-${here/ip}
-</property>
-<property switch="-N" type="boolean" id="nobody" mode="w" >
-True
-</property>
-<property switch="-a" type="boolean" id="auth" mode="w" >
-True
-</property>
-<property switch="-S" type="boolean" id="ssl" mode="w" >
-True
+<property switch="-R" type="string" id="eregex" mode="w" >
+${here/eregex}
 </property>
 <property switch="None" type="string" id="eventComponent" mode="w" >
 ${here/eventComponent}
@@ -55,62 +49,53 @@ ${here/eventComponent}
 <property switch="-e" type="string" id="expect" mode="w" >
 ${here/expect}
 </property>
-<property switch="None" type="string" id="proxyAuthUser" mode="w" >
-${here/proxyAuthUser}
-</property>
-<property switch="None" type="int" id="cycletime" mode="w" >
-300
-</property>
-<property switch="-P" type="string" id="post" mode="w" >
-${here/post}
-</property>
-<property switch="-R" type="string" id="eregex" mode="w" >
-${here/eregex}
-</property>
-<property switch="None" type="string" id="authPassword" mode="w" >
-${here/authPassword}
-</property>
-<property switch="-r" type="string" id="regex" mode="w" >
-${here/regex}
-</property>
-<property switch="-L" type="boolean" id="urlize" mode="w" >
-True
-</property>
-<property switch="-u" type="string" id="url" mode="w" >
-${here/url}
+<property switch="-H" type="string" id="hostname" mode="w" >
+${here/hostname}
 </property>
 <property switch="--invert-regex" type="boolean" id="invert" mode="w" >
 True
 </property>
-<property switch="-H" type="string" id="hostname" mode="w" >
-${here/hostname}
+<property switch="-I" type="string" id="ip" mode="w" >
+${here/ip}
 </property>
 <property switch="-M" type="string" id="maxage" mode="w" >
 ${here/maxage}
 </property>
+<property switch="-j" type="string" id="method" mode="w" >
+${here/method}
+</property>
+<property switch="-N" type="boolean" id="nobody" mode="w" >
+True
+</property>
+<property switch="-f" type="string" id="onRedirect" mode="w" >
+${here/onRedirect}
+</property>
 <property switch="-p" type="string" id="port" mode="w" >
 ${here/port}
 </property>
-<property switch="None" type="string" id="proxyAuthPassword" mode="w" >
-${here/proxyAuthPassword}
-</property>
-<property switch="-C" type="boolean" id="cert" mode="w" >
-True
+<property switch="-P" type="string" id="post" mode="w" >
+${here/post}
 </property>
 <property switch="-b" type="boolean" id="proxyAuth" mode="w" >
 True
 </property>
-<property switch="None" type="string" id="eventKey" mode="w" >
-${here/eventKey}
+<property switch="None" type="string" id="proxyAuthUser" mode="w" >
+${here/proxyAuthUser}
 </property>
-<property switch="-t" type="string" id="timeout" mode="w" >
+<property switch="-r" type="string" id="regex" mode="w" >
+${here/regex}
+</property>
+<property switch="-s" type="string" id="string" mode="w" >
+${here/string}
+</property>
+<property switch="-t" type="int" id="timeout" mode="w" >
 60
 </property>
-<property switch="-j" type="string" id="method" mode="w" >
-${here/method}
+<property switch="-u" type="string" id="url" mode="w" >
+${here/url}
 </property>
-<property switch="-f" type="string" id="onRedirect" mode="w" >
-${here/onRedirect}
+<property switch="-L" type="boolean" id="urlize" mode="w" >
+True
 </property>
 <tomanycont id='datapoints'>
 <object id='size' module='Products.ZenModel.RRDDataPoint' class='RRDDataPoint'>

@@ -1,3 +1,4 @@
+
 (function() {
         
             function getPageContext() {
@@ -21,43 +22,34 @@
                                 labelAlign: 'top',
                                 footerStyle: 'padding-left: 0',
                                 border: false,
-                                items: [
-                {
-                xtype: 'textfield',
-                name: 'port',
-                fieldLabel: _t('Port'),
-                id: "portField",
-                width: 260,
-                allowBlank: false,
-                },
-                
-                {
-                xtype: 'checkbox',
-                name: 'ssl',
-                fieldLabel: _t('SSL'),
-                id: "sslField",
-                width: 260,
-                allowBlank: false,
-                },
-                
-                {
-                xtype: 'textfield',
-                name: 'eventComponent',
-                fieldLabel: _t('Alias'),
-                id: "eventComponentField",
-                width: 260,
-                allowBlank: false,
-                },
-                
-                {
-                xtype: 'textfield',
-                name: 'url',
-                fieldLabel: _t('URL'),
-                id: "urlField",
-                width: 260,
-                allowBlank: false,
-                },
-                ],
+                                items:                         [
+                            {
+                                fieldLabel: 'Alias', 
+                                allowBlank: 'false', 
+                                name: 'eventComponent', 
+                                width: 260, 
+                                id: 'eventComponentField', 
+                                xtype: 'textfield'
+                            }, 
+                            {
+                                fieldLabel: 'Port', 
+                                allowBlank: 'false', 
+                                name: 'port', 
+                                width: 260, 
+                                id: 'portField', 
+                                xtype: 'textfield'
+                            }, 
+                            {
+                                fieldLabel: 'URL', 
+                                allowBlank: 'false', 
+                                name: 'url', 
+                                width: 260, 
+                                id: 'urlField', 
+                                xtype: 'textfield'
+                            }
+                        ]
+
+                                ,
                                 buttons: [{
                                     xtype: 'DialogButton',
                                     id: 'zenHttpComponent-submit',
@@ -74,8 +66,11 @@
                                                     message: response.msg,
                                                     buttons: [{
                                                         xtype: 'DialogButton',
-                                                        text: _t('OK')
-                                                    }]
+                                                        text: _t('OK'),
+                                                        handler: function() { 
+                                                            window.top.location.reload();
+                                                            }
+                                                        }]
                                                 }).show();
                                             }
                                             else {
@@ -83,8 +78,11 @@
                                                     message: response.msg,
                                                     buttons: [{
                                                         xtype: 'DialogButton',
-                                                        text: _t('OK')
-                                                    }]
+                                                        text: _t('OK'),
+                                                        handler: function() { 
+                                                            window.top.location.reload();
+                                                            }
+                                                        }]
                                                 }).show();
                                             }
                                         });

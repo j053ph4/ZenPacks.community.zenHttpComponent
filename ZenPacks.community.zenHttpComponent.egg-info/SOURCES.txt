@@ -21,6 +21,7 @@ ZenPacks/community/zenHttpComponent/HttpComponent.py
 ZenPacks/community/zenHttpComponent/HttpComponent.pyc
 ZenPacks/community/zenHttpComponent/LICENSE.txt
 ZenPacks/community/zenHttpComponent/__init__.py
+ZenPacks/community/zenHttpComponent/__init__.py.bak
 ZenPacks/community/zenHttpComponent/__init__.pyc
 ZenPacks/community/zenHttpComponent/configure.zcml
 ZenPacks/community/zenHttpComponent/facades.py
@@ -31,13 +32,16 @@ ZenPacks/community/zenHttpComponent/interfaces.py
 ZenPacks/community/zenHttpComponent/interfaces.pyc
 ZenPacks/community/zenHttpComponent/routers.py
 ZenPacks/community/zenHttpComponent/routers.pyc
+ZenPacks/community/zenHttpComponent/sybinit.err
 ZenPacks/community/zenHttpComponent/datasources/HttpComponentDataSource.py
 ZenPacks/community/zenHttpComponent/datasources/HttpComponentDataSource.pyc
 ZenPacks/community/zenHttpComponent/datasources/__init__.py
 ZenPacks/community/zenHttpComponent/datasources/__init__.pyc
+ZenPacks/community/zenHttpComponent/lib/__init__.py
 ZenPacks/community/zenHttpComponent/libexec/__init__.py
 ZenPacks/community/zenHttpComponent/migrate/__init__.py
 ZenPacks/community/zenHttpComponent/modeler/__init__.py
+ZenPacks/community/zenHttpComponent/modeler/plugins/__init__.py
 ZenPacks/community/zenHttpComponent/objects/objects.xml
 ZenPacks/community/zenHttpComponent/resources/httpcomponent-add.js
 ZenPacks/community/zenHttpComponent/resources/httpcomponent.js
