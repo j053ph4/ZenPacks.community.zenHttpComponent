@@ -40,6 +40,14 @@
                                 xtype: 'textfield'
                             }, 
                             {
+                                fieldLabel: 'SSL', 
+                                allowBlank: 'false', 
+                                name: 'ssl', 
+                                width: 260, 
+                                id: 'sslField', 
+                                xtype: 'checkbox'
+                            }, 
+                            {
                                 fieldLabel: 'URL', 
                                 allowBlank: 'false', 
                                 name: 'url', 

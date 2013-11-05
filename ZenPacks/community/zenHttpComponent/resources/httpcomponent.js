@@ -38,6 +38,9 @@
                         "name": "port"
                     }, 
                     {
+                        "name": "ssl"
+                    }, 
+                    {
                         "name": "url"
                     }, 
                     {
@@ -90,6 +93,13 @@
                         "sortable": "true", 
                         "id": "port", 
                         "dataIndex": "port"
+                    }, 
+                    {
+                        "header": "SSL", 
+                        "width": 120, 
+                        "sortable": "true", 
+                        "id": "ssl", 
+                        "dataIndex": "ssl"
                     }, 
                     {
                         "header": "URL", 

@@ -4,13 +4,13 @@ from ZenPacks.community.ConstructionKit.Construct import *
 def addArgs(ob, context, data={}):
     ''' evaluate and return command line args '''
     parts = []
-    if str(getattr(context, 'auth')) == True :
+    if str(getattr(context, 'proxyAuth')) == "True" :
         parts.append('%s \"%s:%s\"' % (data['proxyAuth']['switch'],
                                        str(getattr(context, 'proxyAuthUser')),
                                        str(getattr(context, 'proxyAuthPassword'))
                                        ))
     
-    if str(getattr(context, 'proxyAuth')) == True :
+    if str(getattr(context, 'auth')) == "True" :
         parts.append('%s \"%s:%s\"' % (data['auth']['switch'],
                                        str(getattr(context, 'authUser')),
                                        str(getattr(context, 'authPassword'))
@@ -22,7 +22,6 @@ def getUUID(ob):
     import uuid
     uid = uuid.uuid1()
     return str(uid)
-
 
 HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
         'version' : Version(2, 1, 0),
@@ -39,6 +38,7 @@ HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
                             'ip' : addProperty('IP',default='manageIp', switch='-I',override=True, isReference=True),
                             'port' : addProperty('Port',default='80', switch='-p',optional=False),
                             'url' : addProperty('URL',default='/', switch='-u',optional=False),
+                            'ssl': addProperty('SSL',default=False, ptype='boolean', switch='-S',optional=False),
                             'eventComponent' : addProperty('Alias',default='URL', optional=False),
                             'eventClass' : getEventClass('/WWW'),
                             'proxyAuth': addProperty('Proxy Authenticate',group='Authentication', default=False, ptype='boolean', switch='-b'),
@@ -55,7 +55,7 @@ HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
                             'post' : addProperty('POST',group='Content', switch='-P'),
                             'contentType' : addProperty('Content Type', group='Content', switch='-T'),
                             'method': addProperty('HTTP method',group='Miscellaneous', switch='-j'),
-                            'cert': addProperty('Certificate',group='Miscellaneous',ptype='int', switch='-C'),
+                            'cert': addProperty('Certificate',group='Miscellaneous',default=None, ptype='int', switch='-C'),
                             'nobody': addProperty('Headers Only',group='Miscellaneous', default=False, ptype='boolean', switch='-N'),
                             'maxage' : addProperty('Max Age',group='Miscellaneous', switch='-M'),
                             'onRedirect' : addProperty('Redirect Behavior', group='Miscellaneous',default='follow', switch='-f'),
@@ -66,7 +66,7 @@ HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
         'cmdFile':'check_http',
         'addManual' : True,
         'createDS' : True,
-        'ignoreKeys' : ['auth', 'authUser', 'authPassword','proxyAuth', 'proxyAuthUser', 'proxyAuthPassword'],
+        'ignoreKeys' : ['auth', 'authUser', 'authPassword','proxyAuth', 'proxyAuthUser', 'proxyAuthPassword','getEventClasses', 'getIpserviceLink'],
         'datasourceMethods' : [addArgs],
         'datapoints' : ['size','time'],
         }

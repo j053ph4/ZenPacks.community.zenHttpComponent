@@ -4,7 +4,7 @@ Description:
 This zenpack allows monitored URLs to be managed as if they were device
 components, using the standard GUI component management methods. It utilizes
 the "check-http" Nagios plugin that ships with Zenoss, but the command plugin
-arguments are the component attributes assigned at component creation. 
+arguments are the component attributes assigned at component creation.
 
 URLs can be added via the "add components" menu on the Device Status page, and
 can be removed or otherwise modified using the menus in the Components Pane of
@@ -34,7 +34,7 @@ ZenPack installation.
 
 Requirements:
 
-    Zenoss Versions Supported: 3.x,4.x
+    Zenoss Versions Supported: 3.x,4.x (4.2.4 for version 2.1)
     External Dependencies: None
     ZenPack Dependencies: None
     Installation Notes: zopectl restart; zenhub restart after installing this
@@ -65,9 +65,16 @@ Change History:
     <https://github.com/j053ph4/ZenPacks.community.ConstructionKit>
     Template now closely resembles that of HttpMonitor ZenPack
 
+2.1
+	added support for ConstructionKit 2.0
+	removed support for Zenoss 3.x
+	added relation to IpService
+	improved javascript add component handling
+	improved layout/sorting in details pane
+	ability to select target event class from layout pane
 
-Tested: This ZenPack was tested with versions 3.2.1, 4.2.3
+Tested: This ZenPack was tested with versions 3.2.1, 4.2.3, 4.2.4
 
 Source: https://github.com/j053ph4/ZenPacks.community.zenHttpComponent
 
-Known issues:  
+Known issues:

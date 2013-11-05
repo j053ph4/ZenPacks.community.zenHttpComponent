@@ -10,9 +10,6 @@ from ZenPacks.community.zenHttpComponent.datasources.HttpComponentDataSource imp
 def HttpComponentRedirectVocabulary(context):
     return SimpleVocabulary.fromValues(HttpComponentDataSource.onRedirectOptions)
 
-def HttpComponentDataSourcegetEventClassesVocabulary(context):
-    return SimpleVocabulary.fromValues(context.listgetEventClasses())
-
 class HttpComponentDataSourceInfo(ClassHelper.HttpComponentDataSourceInfo):
     ''''''
 
