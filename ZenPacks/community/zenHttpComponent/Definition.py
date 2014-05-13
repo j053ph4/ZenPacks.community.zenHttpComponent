@@ -7,17 +7,17 @@ def addArgs(ob, context, data={}):
     if str(getattr(context, 'proxyAuth')) == "True" :
         parts.append('%s \"%s:%s\"' % (data['proxyAuth']['switch'],
                                        str(getattr(context, 'proxyAuthUser')),
-                                       str(getattr(context, 'proxyAuthPassword'))
+                                       str(context.getPassword('proxyAuthPassword'))
                                        ))
     
     if str(getattr(context, 'auth')) == "True" :
         parts.append('%s \"%s:%s\"' % (data['auth']['switch'],
                                        str(getattr(context, 'authUser')),
-                                       str(getattr(context, 'authPassword'))
+                                       str(context.getPassword('authPassword'))
                                        ))
     parts.append("-t %s" % getattr(ob, "timeout"))
     return parts
-    
+   
 def getUUID(ob):
     import uuid
     uid = uuid.uuid1()

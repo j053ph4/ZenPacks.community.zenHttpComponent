@@ -85,6 +85,9 @@ ${here/proxyAuthUser}
 <property switch="-r" type="string" id="regex" mode="w" >
 ${here/regex}
 </property>
+<property switch="-S" type="boolean" id="ssl" mode="w" >
+True
+</property>
 <property switch="-s" type="string" id="string" mode="w" >
 ${here/string}
 </property>

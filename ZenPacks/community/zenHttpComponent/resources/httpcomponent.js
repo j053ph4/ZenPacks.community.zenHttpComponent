@@ -9,7 +9,11 @@
             return ob;
         }
     }
-
+    
+    function pass_link(ob){ 
+        return ob; 
+    }
+    
     ZC.HttpComponentPanel = Ext.extend(ZC.ComponentGridPanel, {
         constructor: function(config) {
             config = Ext.applyIf(config||{}, {
@@ -74,37 +78,42 @@
                         "dataIndex": "name"
                     }, 
                     {
-                        "header": "Alias", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "Alias", 
+                        "renderer": "pass_link", 
                         "id": "eventComponent", 
                         "dataIndex": "eventComponent"
                     }, 
                     {
-                        "header": "IP Service", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "IP Service", 
+                        "renderer": "pass_link", 
                         "id": "getIpserviceLink", 
                         "dataIndex": "getIpserviceLink"
                     }, 
                     {
-                        "header": "Port", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "Port", 
+                        "renderer": "pass_link", 
                         "id": "port", 
                         "dataIndex": "port"
                     }, 
                     {
-                        "header": "SSL", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "SSL", 
+                        "renderer": "pass_link", 
                         "id": "ssl", 
                         "dataIndex": "ssl"
                     }, 
                     {
-                        "header": "URL", 
-                        "width": 120, 
                         "sortable": "true", 
+                        "width": 120, 
+                        "header": "URL", 
+                        "renderer": "pass_link", 
                         "id": "url", 
                         "dataIndex": "url"
                     }, 
