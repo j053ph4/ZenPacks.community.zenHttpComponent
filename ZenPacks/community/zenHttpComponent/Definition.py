@@ -17,14 +17,14 @@ def addArgs(ob, context, data={}):
                                        ))
     parts.append("-t %s" % getattr(ob, "timeout"))
     return parts
-   
+    
 def getUUID(ob):
     import uuid
     uid = uuid.uuid1()
     return str(uid)
 
 HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
-        'version' : Version(2, 1, 0),
+        'version' : Version(2, 2, 0),
         'zenpackroot' : "ZenPacks.community",
         'zenpackbase': "zenHttpComponent",
         'component' : 'HttpComponent',
