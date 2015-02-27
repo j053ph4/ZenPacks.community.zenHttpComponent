@@ -4,17 +4,20 @@ from ZenPacks.community.ConstructionKit.Construct import *
 def addArgs(ob, context, data={}):
     ''' evaluate and return command line args '''
     parts = []
-    if str(getattr(context, 'proxyAuth')) == "True" :
-        parts.append('%s \"%s:%s\"' % (data['proxyAuth']['switch'],
-                                       str(getattr(context, 'proxyAuthUser')),
-                                       str(context.getPassword('proxyAuthPassword'))
-                                       ))
-    
-    if str(getattr(context, 'auth')) == "True" :
-        parts.append('%s \"%s:%s\"' % (data['auth']['switch'],
-                                       str(getattr(context, 'authUser')),
-                                       str(context.getPassword('authPassword'))
-                                       ))
+    try:
+        if str(getattr(context, 'proxyAuth')) == "True" :
+            parts.append('%s \"%s:%s\"' % (data['proxyAuth']['switch'],
+                                           str(getattr(context, 'proxyAuthUser')),
+                                           str(context.getPassword('proxyAuthPassword'))
+                                           ))
+    except:  pass
+    try:
+        if str(getattr(context, 'auth')) == "True" :
+            parts.append('%s \"%s:%s\"' % (data['auth']['switch'],
+                                           str(getattr(context, 'authUser')),
+                                           str(context.getPassword('authPassword'))
+                                           ))
+    except:  pass
     parts.append("-t %s" % getattr(ob, "timeout"))
     return parts
     
@@ -24,7 +27,7 @@ def getUUID(ob):
     return str(uid)
 
 HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
-        'version' : Version(2, 2, 0),
+        'version' : Version(2, 2, 1),
         'zenpackroot' : "ZenPacks.community",
         'zenpackbase': "zenHttpComponent",
         'component' : 'HttpComponent',
@@ -69,10 +72,13 @@ HttpDefinition = type('HttpDefinition', (BasicDefinition,),  {
         'ignoreKeys' : ['auth', 'authUser', 'authPassword','proxyAuth', 'proxyAuthUser', 'proxyAuthPassword','getEventClasses', 'getIpserviceLink'],
         'datasourceMethods' : [addArgs],
         'datapoints' : ['size','time'],
+        'saveOld': True,
+        'loadOld': True,
         }
 )
 
 addDefinitionDeviceComponentRelation(HttpDefinition,'manageIp', 'ip',
-                          'httpcomponents', ToMany, 'ZenPacks.community.HttpDefinition.HttpComponent','port',
+                          'httpcomponents', ToMany, 'ZenPacks.community.zenHttpComponent.HttpComponent','port',
                           'ipservice',  ToOne, 'Products.ZenModel.IpService', 'port',
                           'IP Service', 'port')
+
